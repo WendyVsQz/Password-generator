@@ -1,4 +1,4 @@
-# Password-generator#
+# Password-generator
 
 ### The program will ask: ###
 
