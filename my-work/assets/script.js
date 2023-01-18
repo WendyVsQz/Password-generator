@@ -253,6 +253,7 @@ function check_form() {
           alert("Please make sure Password Includes a Digit")
           return false;
       }
+    }
 
       /*email test*/
       var email = document.getElementById('email-input-0').value;
@@ -266,4 +267,3 @@ function check_form() {
 
       return true;
   }
-}
