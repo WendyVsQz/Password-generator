@@ -1,6 +1,6 @@
 
 // Array of special characters to be included in password
-var specialCharacters = [
+let specialCharacters = [
   '@','%','+','\\','/',"'",
   '!','#','$','^','?',':',
   ',', ')', '(','}','{',']',
@@ -8,12 +8,12 @@ var specialCharacters = [
 ];
 
 // Array of numeric characters to be included in password
-var numericCharacters = [
+let numericCharacters = [
   '0', '1', '2', '3', '4', '5',
   '6', '7', '8', '9'];
 
 // Array of lowercase characters to be included in password
-var lowerCasedCharacters = [
+let lowerCasedCharacters = [
   'a','b','c','d','e','f',
   'g','h','i','j','k','l',
   'm','n','o','p','q','r',
@@ -22,7 +22,7 @@ var lowerCasedCharacters = [
 ];
 
 // Array of uppercase characters to be included in password
-var upperCasedCharacters = [
+let upperCasedCharacters = [
   'A','B','C', 'D', 'E', 'F',
   'G','H','I','J', 'K', 'L',
   'M','N','O','P', 'Q', 'R',
@@ -36,15 +36,21 @@ var upperCasedCharacters = [
 //2. I want to function the generator according to the given prompt answers. 
 //3. I want to function the copy button.
 //---------------------------//
-const password = document.querySelector('#password');
 const generateBtn = document.querySelector('#generate');
-const copy_btn = document.querySelector('#copy');
+const copyBtn = document.querySelector('#copy');
 //----------------------------//
 //generator function
 function generatePassword() {
 console.log("hey! you clicked the button");
 
-return "password generated";
+// 1. prompt the user
+   // a. passwrod length
+   // b. lowercase, uppercase, symbols & numbers
+// 2. validate the input
+// 3. generate password
+
+// 4. display password to the page
+return "password generated!";
 }
 //----------------------------
 // button function
@@ -53,6 +59,7 @@ function writePassword() {
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
+// add event listener
 generateBtn.addEventListener("click", writePassword);
 //-------------------------------
 //copy function
