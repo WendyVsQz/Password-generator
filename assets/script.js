@@ -36,11 +36,12 @@ let symbols_chars=[
   ',', ')', '(','}','{',']',
   '[','~','-','_','.'];
 
+  //Array of characters
   let userOptions = [
     symbols_chars, uppercase_chars,
     lowercase_chars,numbers_chars,
   ]
-
+  //Empty arrays
   let passwordChoices= [];
   let passwordLength= [];
   //---------------------------//
@@ -48,7 +49,7 @@ let symbols_chars=[
   //----------------------------//
   
   // 1. prompt the user
-  function generatePassword() {
+  function getPasswordOptions() {
     
     console.log("button clicked!");
     // a. passwrod length
@@ -79,62 +80,62 @@ let symbols_chars=[
           passwordChoices.push(symbols_chars)
         }
       } else alert("refresh to try again");
+
+      if (passwordChoices.length === 0) return;
+      
+      for (var i = 0; i<passwordLength; i++) {
+      var randomIndex = Math.floor(Math.random() * passwordChoices.length);
+      var random = passwordChoices[randomIndex];
+      userOptions = userOptions.concat(random)
+      }
     return userOptions;
   }
   //checks to see if choices have been logged properly
-console.log(passwordChoices);
+  const resp = getPasswordOptions();
+  console.log(`Password :::> ${resp} | length :::> ${resp.length}`);
+//console.log(passwordChoices);
 //console.log(passwordchoices);
 
+// create new variable out of paswordChoices[0] - (password length) - to avoid confusion later.
+let charCount = passwordChoices[0];
+//checks if working.
+//console.log(charCount);
+//now on to create new array, by concating the remaining choices together.
+let choice1 = passwordChoices[1];
+let choice2 = passwordChoices[2];
+let choice3 = passwordChoices[3];
+let choice4 = passwordChoices[4];
+let joinedArray = choice1.concat(choice2, choice3, choice4);
+//deletes undefined and returns a new array called finalCharacterChoice
+// check joinedArray
+//console.log(joinedArray);
+let finalCharacterChoice = joinedArray.filter(function (element) {
+  return element !== undefined;
+});
+//check to see if working
+//console.log(finalCharacterChoice);
 
-  //call function
-  generatePassword();
-
-// 2. validate the input
-/* 
-if (numbers === true) {
-  minimumNumbers = functionArray.getNumbers();
-  minimumCount++;
-
+// Function for getting a random element from an array
+function getRandom(arr) {
+  return arr[Math.floor(Math.random() * finalCharacterChoice.length)];
 }
 
-if (lowerCases === true) {
-  minimumLowerCases = functionArray.getLowerCases();
-  minimumCount++;
+//check to see if function is working
+//console.log(getRandom(finalCharacterChoice));
 
+// Function to generate password with user input. Running for loop for the length specified in CharCount.
+function generatePassword() {
+  for (i = 0; i < charCount; i++) {
+    password += getRandom(finalCharacterChoice);
+  }
+  return password;
 }
 
-if (upperCases === true) {
-  minimumUpperCases = functionArray.getUpperCases();
-  minimumCount++;
+let password = [];
+generatePassword();
+//check to see if working
+//console.log(password);
 
-}
-
-if (special === true) {
-  minimumSpecialCharacters = functionArray.getSpecialCharacters();
-} */
-
-/* var randomPasswordGenerated = ""; 
-
-for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-  var randomNumberPicked = Math.floor(Math.random() * 4);
-
-  randomPasswordGenerated += randomNumberPicked;
-
-}
-randomPasswordGenerated += minimumNumbers;
-randomPasswordGenerated += minimumLowerCases;
-randomPasswordGenerated += minimumUpperCases;
-randomPasswordGenerated += minimumSpecialCharacters;
-// 3. display password to the page
-return randomPasswordGenerated;
-
-// Empty minimums for numbers, lowerCases, upperCases & specialCharacters
-
-var minimumNumbers = "";
-var minimumLowerCases = "";
-var minimumUpperCases = "";
-var minimumSpecialCharacters = "";
- */
 //----------------------------
 // button function
 function writePassword() {
