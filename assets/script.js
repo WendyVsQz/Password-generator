@@ -50,8 +50,6 @@ let symbols_chars=[
   
   // 1. prompt the user
   function getPasswordOptions() {
-    
-    console.log("button clicked!");
     // a. passwrod length
     let passwordLength = parseInt(prompt("Please enter the number of characters you want for your new password.  It must be more than 12 but less than 128."));
     if (passwordLength >= 12 && passwordLength <= 128) {
@@ -117,11 +115,40 @@ let finalCharacterChoice = joinedArray.filter(function (element) {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  return arr[Math.floor(Math.random() * finalCharacterChoice.length)];
+  const randomIndex =  Math.floor(Math.random() * arr.length);
+
+  const item =  arr[randomIndex];
+
+  return item;
 }
+
+let randlower = getRandom(lowercase_chars)
+
+let randupper = getRandom(uppercase_chars)
+
+let randnumber = getRandom(numbers_chars)
+
+let randspecial = getRandom(symbols_chars)
 
 //check to see if function is working
 //console.log(getRandom(finalCharacterChoice));
+
+function generateRandom( min = 0, max = 100) {
+  let difference = max - min;
+
+  let rand =  Math.random();
+
+  rand = Math.floor( rand * difference);
+
+  rand = rand + min;
+
+  return rand;
+}
+
+function shuffle(array) {
+  array.sort(()=> Math.random() =0.5);
+}
+
 
 // Function to generate password with user input. Running for loop for the length specified in CharCount.
 function generatePassword() {
