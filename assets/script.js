@@ -51,8 +51,8 @@ let symbols_chars=[
   // 1. prompt the user
   function getPasswordOptions() {
     // a. passwrod length
-    let passwordLength = parseInt(prompt("Please enter the number of characters you want for your new password.  It must be more than 12 but less than 128."));
-    if (passwordLength >= 12 && passwordLength <= 128) {
+    let passwordLength = parseInt(prompt("Please enter the number of characters you want for your new password.  It must be more than 10 but less than 128."));
+    if (passwordLength >= 10 && passwordLength <= 128) {
       passwordChoices.push(passwordLength);
 
         // b. numbers
@@ -94,7 +94,7 @@ let symbols_chars=[
 //console.log(passwordChoices);
 //console.log(passwordchoices);
 
-// create new variable out of paswordChoices[0] - (password length) - to avoid confusion later.
+// create new variable out of paswordChoices[0] - (password length) 
 let charCount = passwordChoices[0];
 //checks if working.
 //console.log(charCount);
@@ -112,56 +112,50 @@ let finalCharacterChoice = joinedArray.filter(function (element) {
 });
 //check to see if working
 //console.log(finalCharacterChoice);
-
 // Function for getting a random element from an array
-function getRandom(arr) {
-  const randomIndex =  Math.floor(Math.random() * arr.length);
+function shuffleArr (arr) {
+   const randomIndex =  Math.floor(Math.random() * arr.length);
 
   const item =  arr[randomIndex];
 
   return item;
-}
+  }
 
-let randlower = getRandom(lowercase_chars)
 
-let randupper = getRandom(uppercase_chars)
 
-let randnumber = getRandom(numbers_chars)
+let randlower = shuffleArr(lowercase_chars)
 
-let randspecial = getRandom(symbols_chars)
+let randupper = shuffleArr(uppercase_chars)
+
+let randnumber = shuffleArr(numbers_chars)
+
+let randspecial = shuffleArr(symbols_chars)
+
+const rand=[randlower, randupper, randnumber,randspecial]
+
+shuffleArr(rand) 
+console.log(rand)
 
 //check to see if function is working
 //console.log(getRandom(finalCharacterChoice));
 
-function generateRandom( min = 0, max = 100) {
-  let difference = max - min;
-
-  let rand =  Math.random();
-
-  rand = Math.floor( rand * difference);
-
-  rand = rand + min;
-
-  return rand;
-}
-
-function shuffle(array) {
-  array.sort(()=> Math.random() =0.5);
-}
-
-
+//creating a function to randomly shuffle my password after generating
 // Function to generate password with user input. Running for loop for the length specified in CharCount.
 function generatePassword() {
+  password = ''
   for (i = 0; i < charCount; i++) {
-    password += getRandom(finalCharacterChoice);
+    password += shuffleArr(finalCharacterChoice);
+    //shuffle(password)
+    
   }
-  return password;
+  return password
+ // return password;
 }
-
+console.log(finalCharacterChoice);
 let password = [];
 generatePassword();
+
 //check to see if working
-//console.log(password);
 
 //----------------------------
 // button function
@@ -170,19 +164,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
 }
-
-function syncLength() {
-  const value = e.target.value
-  passwordLength.value = value
-  passwordLength.value = value
-}
 // add event listener
 generateBtn.addEventListener("click", writePassword);
 
-//-------------------------------//
-var copyBtn = document.querySelector('#copy');
-//-------------------------------//
-//copy function
-async function copyPassword(){
-
-}
